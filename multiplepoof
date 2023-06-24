@@ -1,0 +1,29 @@
+#!/bin/bash
+##creates poof files, then deletes them
+clock=50
+poofnum=1
+deltimer=10
+
+while
+	[ $clock -ge 1 ]
+do
+	clock=$(($clock - 1))
+	touch poof$poofnum
+	echo "poof$poofnum created"
+	poofnum=$(($poofnum + 1))
+	sleep 0.1
+done
+
+while
+	[ $deltimer -ge 1 ]
+do
+	echo "deleting all poofs in $deltimer"
+	deltimer=$(($deltimer -1))
+	sleep .2
+done
+
+for delpoof in ./poof*
+ do
+	rm $delpoof
+done
+echo "all poofs deleted"
