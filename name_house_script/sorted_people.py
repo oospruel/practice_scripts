@@ -1,13 +1,10 @@
-import operator
+#This script prints the imputs from people.txt created from the name.py script. 
+import csv
 
 tmp_list = []
-with open("people.txt") as file:
-    for line in file:
-        line = line.strip().split(",")
-        name = line[0]
-        house = line[1]
-        age = line[2]
-        students = {"name": name, "house": house, "age": age} # creates dictionary and assigns keys and values
-        tmp_list.append(students) #Append to list
-#print(sorted(tmp_list, key= operator.itemgetter("age")))   REMOVE POUND TO VIEW SORTED LIST
-print("{} is{},and lives at{}".format(students["name"], students["age"], students["house"]))
+with open("people.csv") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        tmp_list.append(row)
+for student in sorted(tmp_list, key=lambda x:x["home"]) :
+    print("{} is {}, and lives at {}".format(student['name'], student['age'], student['home']))
