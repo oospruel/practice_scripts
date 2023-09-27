@@ -8,7 +8,7 @@ except:
     exit()
 # create empty dicionary
 tmpdic = {}
-# strip lins into words, and add words to empty dictionary
+# strip lines into words, and add words to empty dictionary
 for fn in f :
     fn = fn.strip()
     wds = fn.split()
